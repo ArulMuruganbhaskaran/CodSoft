@@ -1,0 +1,174 @@
+CALCULATOR
+
+<!-- File: index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <!-- Display Screen -->
+        <div id="display" class="display">0</div>
+
+        <!-- Buttons -->
+        <div class="buttons">
+            <!-- Number and Operator Buttons -->
+            <button class="btn" data-value="7">7</button>
+            <button class="btn" data-value="8">8</button>
+            <button class="btn" data-value="9">9</button>
+            <button class="btn operator" data-value="/">÷</button>
+
+            <button class="btn" data-value="4">4</button>
+            <button class="btn" data-value="5">5</button>
+            <button class="btn" data-value="6">6</button>
+            <button class="btn operator" data-value="*">×</button>
+
+            <button class="btn" data-value="1">1</button>
+            <button class="btn" data-value="2">2</button>
+            <button class="btn" data-value="3">3</button>
+            <button class="btn operator" data-value="-">−</button>
+
+            <button class="btn" data-value="0">0</button>
+            <button class="btn" data-value=".">.</button>
+            <button class="btn operator" data-value="=">=</button>
+            <button class="btn operator" data-value="+">+</button>
+
+            <!-- Clear Button -->
+            <button class="btn clear" data-value="clear">C</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+/* File: style.css */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #f4f4f4;
+}
+
+.calculator {
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.display {
+    background: #333;
+    color: white;
+    font-size: 2rem;
+    text-align: right;
+    padding: 1rem;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #ddd;
+}
+
+.btn {
+    font-size: 1.5rem;
+    padding: 1rem;
+    border: none;
+    background: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #f0f0f0;
+}
+
+.operator {
+    background: #f9f9f9;
+}
+
+.operator:hover {
+    background: #e6e6e6;
+}
+
+.clear {
+    background: #ff6b6b;
+    color: white;
+}
+
+.clear:hover {
+    background: #ff4747;
+}
+
+
+/* File: script.js */
+const display = document.getElementById('display');
+const buttons = document.querySelectorAll('.btn');
+
+let currentInput = '';
+let operator = '';
+let firstOperand = '';
+let secondOperand = '';
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        const value = button.getAttribute('data-value');
+
+        if (value === 'clear') {
+            // Clear everything
+            currentInput = '';
+            operator = '';
+            firstOperand = '';
+            secondOperand = '';
+            display.innerText = '0';
+        } else if (['+', '-', '*', '/'].includes(value)) {
+            // Save the first operand and operator
+            if (currentInput !== '') {
+                firstOperand = currentInput;
+                operator = value;
+                currentInput = '';
+            }
+        } else if (value === '=') {
+            // Perform calculation
+            if (firstOperand !== '' && operator !== '' && currentInput !== '') {
+                secondOperand = currentInput;
+                const result = calculate(Number(firstOperand), operator, Number(secondOperand));
+                display.innerText = result;
+                currentInput = result.toString();
+                operator = '';
+                firstOperand = '';
+                secondOperand = '';
+            }
+        } else {
+            // Update display with numbers or decimal point
+            currentInput += value;
+            display.innerText = currentInput;
+        }
+    });
+});
+
+function calculate(a, operator, b) {
+    switch (operator) {
+        case '+': return a + b;
+        case '-': return a - b;
+        case '*': return a * b;
+        case '/': return b !== 0 ? a / b : 'Error';
+        default: return 0;
+    }
+}

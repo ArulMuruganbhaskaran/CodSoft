@@ -1,0 +1,182 @@
+
+PORTFOLIO
+
+
+<!-- File: index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <h1>Your Name</h1>
+        <p class="tagline">Aspiring Web Developer | Creative Problem Solver</p>
+    </header>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <img src="your-image.jpg" alt="Your Photo" class="profile-image">
+            <p>
+                Hi! I'm [Your Name], a passionate web developer with a love for creating user-friendly websites.
+                My expertise lies in HTML, CSS, and JavaScript, with a growing knowledge of backend development.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <h2>Skills</h2>
+        <ul class="skills-list">
+            <li>HTML & CSS</li>
+            <li>JavaScript</li>
+            <li>Responsive Design</li>
+            <li>Version Control (Git)</li>
+            <li>Problem Solving</li>
+        </ul>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2>Projects</h2>
+        <div class="project-item">
+            <h3>Project 1: Portfolio Website</h3>
+            <p>A personal website to showcase my skills and projects.</p>
+            <img src="project1.jpg" alt="Project 1 Screenshot">
+        </div>
+        <div class="project-item">
+            <h3>Project 2: E-commerce App</h3>
+            <p>A mock e-commerce application with a dynamic shopping cart feature.</p>
+            <img src="project2.jpg" alt="Project 2 Screenshot">
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section class="resume" id="resume">
+        <h2>Resume</h2>
+        <p>
+            Download my resume for more details about my experience and education.
+            <a href="resume.pdf" class="resume-link" download>Download Resume</a>
+        </p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="mailto:yourname@example.com">yourname@example.com</a></p>
+        <p>Phone: +123 456 7890</p>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2024 Your Name. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+
+
+
+css
+
+
+/* File: style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    background: #333;
+    color: white;
+    padding: 1rem 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header .tagline {
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+section {
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile-image {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.skills-list li {
+    background: #f4f4f4;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.projects .project-item {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.projects img {
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.resume-link {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #333;
+    color: white;
+}
